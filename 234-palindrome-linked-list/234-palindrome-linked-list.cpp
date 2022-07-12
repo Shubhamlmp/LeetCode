@@ -32,7 +32,7 @@ public:
         }
         
        ListNode* tail = prev;
-        while(head != NULL && tail != NULL && tail != head){
+        while(tail != NULL && tail != head){
             if(head->val != tail->val){
                 return false;
             }
