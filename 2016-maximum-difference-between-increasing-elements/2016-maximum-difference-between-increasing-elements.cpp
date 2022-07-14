@@ -9,7 +9,9 @@ public:
             minn = min(nums[i], minn);
             
         }
+        
         if(maxdiff > 0) return maxdiff;
-        else return -1;
+        
+        return -1;
     }
 };
