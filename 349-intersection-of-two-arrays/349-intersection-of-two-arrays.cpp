@@ -1,21 +1,17 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        int n1 = nums1.size();
-        int n2 = nums2.size();
+        vector<bool>vis(1000);
+        unordered_map<int,int>mymap;
+        vector<int>ans;
         
-        vector<int> ans;
-        int arr[1001] = {-1};
+        for(int i=0;i<nums1.size();i++)
+            mymap[nums1[i]]++;
         
-        for(int i = 0; i< n1; i++){
-            arr[nums1[i]] = 1;
-        }
-        
-        for(int i = 0; i< n2; i++){
-            if(arr[nums2[i]] == 1){
-                ans.push_back(nums2[i]);
-                arr[nums2[i]] = -1;
-            }
+        for(int i=0;i<nums2.size();i++)
+        {
+            if(mymap.find(nums2[i])!=mymap.end()&&!vis[nums2[i]])
+            ans.push_back(nums2[i]),vis[nums2[i]]=true;
         }
         return ans;
     }
