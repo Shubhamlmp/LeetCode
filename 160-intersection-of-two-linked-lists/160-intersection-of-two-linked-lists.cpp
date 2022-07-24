@@ -9,9 +9,7 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        if(headA == NULL || headB == NULL){
-            return NULL;
-        }
+
         ListNode* temp1 = headA;
         ListNode* temp2 = headB;
         
