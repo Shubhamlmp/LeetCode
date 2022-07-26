@@ -12,7 +12,7 @@ public:
     }
     
     void pop() {
-        if(!s.empty() && !s1.empty() && s.top() == s1.top()) s1.pop();
+        if(s.top() == s1.top()) s1.pop();
         s.pop();
     }
     
