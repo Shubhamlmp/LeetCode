@@ -3,13 +3,8 @@ public:
     vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
         vector<bool> ans;
         int a = *max_element(candies.begin(), candies.end());
-        for(int i = 0; i < candies.size(); i++){
-            if(candies[i]+extraCandies >= a){
-                ans.push_back(true);
-            }
-            else{
-                ans.push_back(false);
-            }
+        for(auto i : candies){
+            ans.push_back(extraCandies+i >= a);
         }
         return ans;
     }
