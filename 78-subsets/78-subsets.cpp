@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>>allSubsets;
-    void generate(vector<int> subset, int i, vector<int>& nums) {
+    void generate(vector<int> &subset, int i, vector<int>& nums) {
         if(i == nums.size()){
             allSubsets.push_back(subset);
             return;
