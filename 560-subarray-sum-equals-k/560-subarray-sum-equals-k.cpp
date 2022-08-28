@@ -2,7 +2,7 @@ class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
         int n = nums.size();
-        if(n == 0) return 0;
+        // if(n == 0) return 0;
         unordered_map<int, int> mp;
         int i = 0;
         int currSum = 0, count = 0;
