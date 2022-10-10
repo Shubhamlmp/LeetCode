@@ -27,14 +27,14 @@ public:
         treeHelper(root, mp);
         
         vector<int>ans;
-        int maxx = INT_MIN;
+        int maxx = INT_MIN, temp;
         for(auto x:mp){
             if(x.second > maxx){
-                ans.clear();
                 maxx = x.second;
-                ans.push_back(x.first);
             }
-            else if(maxx == x.second){
+        }
+        for(auto x : mp){
+            if(x.second == maxx){
                 ans.push_back(x.first);
             }
         }
