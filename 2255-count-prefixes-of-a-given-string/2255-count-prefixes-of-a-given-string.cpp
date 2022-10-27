@@ -4,8 +4,7 @@ public:
         int count = 0;
         
         for(auto x : words){
-            int sz = x.size();
-            if(s.substr(0,sz) == x){
+            if(s.substr(0,x.size()) == x){
                 count++;
             }
         }
