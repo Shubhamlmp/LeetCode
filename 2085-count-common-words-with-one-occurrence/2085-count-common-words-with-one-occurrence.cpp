@@ -10,23 +10,9 @@ public:
             m2[x]++;
         }
         int count = 0;
-        vector<string>s1;
         for(auto x : m1){
-            if(x.second == 1){
-                s1.push_back(x.first);
-            }
-        }
-       vector<string>s2;
-        for(auto x : m2){
-            if(x.second == 1){
-                s2.push_back(x.first);
-            }
-        }
-        for(auto x : s1){
-            for(auto c : s2){
-                if(x == c){
-                    count++;
-                }
+            if(x.second == 1 && m2[x.first] == 1){
+                count++;
             }
         }
         return count;
