@@ -5,14 +5,12 @@ public:
         for(auto x : arr){
             mp[x]++;
         }
-        unordered_map<int,int>mp1;
+        set<int>st;
         for(auto x : mp){
-            mp1[x.second]++;
-        }
-        for(auto x : mp1){
-            if(x.second > 1){
+            if(st.count(x.second)){
                 return false;
             }
+            st.insert(x.second);
         }
         return true;
     }
