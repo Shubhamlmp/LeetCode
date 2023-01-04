@@ -11,28 +11,19 @@
  */
 class Solution {
 public:
+    long long MOD = 1e9 + 7;
+    long long totalSum = 0, ans = 0;
+    int find(TreeNode* root) {
+        if(root == NULL) {
+            return 0;
+        }
+        long long sum = find(root->left) + find(root->right) + root->val;
+        ans = max(ans, (totalSum-sum)*sum);
+        return sum;
+    }
     int maxProduct(TreeNode* root) {
-        long int totalSum = 0;
-        getTotalSum(root, totalSum);
-        long int maxProd = INT_MIN;
-        getmaxProduct(root, totalSum, maxProd);
-        return maxProd % 1000000007;
-        
-    }
-    void getTotalSum(TreeNode* root, long int& totalSum){
-        if(root == NULL) return;
-        totalSum += root->val;
-        getTotalSum(root->left, totalSum);
-        getTotalSum(root->right, totalSum);
-    }
-    
-    long int getmaxProduct(TreeNode* root, long int totalSum, long int& maxProd){
-        if(root == NULL) return 0;
-        long int subTreeSum = 0;
-        subTreeSum += getmaxProduct(root->left, totalSum, maxProd);
-        subTreeSum += getmaxProduct(root->right, totalSum, maxProd);
-        subTreeSum += root->val;
-        maxProd = max(maxProd, (totalSum - subTreeSum) * subTreeSum);
-        return subTreeSum;
+        totalSum = find(root);
+        find(root);
+        return ans%MOD;
     }
 };
