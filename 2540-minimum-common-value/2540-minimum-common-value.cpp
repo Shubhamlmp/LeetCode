@@ -1,9 +1,11 @@
 class Solution {
 public:
     int getCommon(vector<int>& nums1, vector<int>& nums2) {
-        set<int> s1(nums1.begin(),nums1.end());
-        for(auto x : nums2){
-            if(s1.count(x)) return x;
+        int i = 0, j = 0;
+        while(i < nums1.size() && j < nums2.size()){
+            if(nums1[i] == nums2[j]) return nums1[i];
+            else if(nums1[i] > nums2[j]) j++;
+            else i++;
         }
         return -1;
     }
