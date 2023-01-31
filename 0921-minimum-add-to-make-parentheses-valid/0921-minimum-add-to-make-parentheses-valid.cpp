@@ -6,7 +6,7 @@ public:
             if(s[i] == '('){
                 st.push('(');
             }
-            else if(s[i] == ')'){
+            else{
                 if(!st.empty() && st.top() == '('){
                     st.pop();
                 }
