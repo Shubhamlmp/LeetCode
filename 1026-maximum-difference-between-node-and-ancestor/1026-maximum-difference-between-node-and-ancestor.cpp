@@ -11,20 +11,15 @@
  */
 class Solution {
 public:
-    
-    int solver(TreeNode* root, int currMin, int currMax) {
-        if(root == NULL) return currMax - currMin;
-        
-        currMin = min(root->val, currMin);
-        currMax = max(root->val, currMax);
-        
-        int left = solver(root->left, currMin, currMax);
-        int right = solver(root->right, currMin, currMax);
-        
-        return max(left, right);
+    int find(TreeNode* root, int maxNum, int minNum) {
+        if(root == NULL){
+            return maxNum-minNum;
+        }
+        maxNum = max(maxNum, root->val);
+        minNum = min(minNum, root->val);
+        return max(find(root->left, maxNum, minNum),find(root->right, maxNum, minNum));
     }
     int maxAncestorDiff(TreeNode* root) {
-        if(root == NULL) return 0;
-        return solver(root, root->val, root->val);
+        return find(root, INT_MIN, INT_MAX);
     }
 };
