@@ -16,8 +16,7 @@ public:
         if(root == NULL){
             return;
         }
-        tempSum *= 10;
-        tempSum += root->val;
+        tempSum = tempSum * 10 + root->val;
         cout << "before "<< tempSum << " ";
         if(root->left == NULL && root->right == NULL){
             totalSum += tempSum;
