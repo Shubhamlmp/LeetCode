@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void helper(TreeNode* root, vector<int> &v){
+    void helper(TreeNode* root, vector<int>& v){
         if(root == NULL){
             return;
         }
@@ -20,11 +20,12 @@ public:
         }
         helper(root->left, v);
         helper(root->right, v);
+        
     }
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-        vector<int>v1,v2;
-        helper(root1,v1);
-        helper(root2,v2);
+        vector<int> v1,v2;
+        helper(root1, v1);
+        helper(root2, v2);
         return v1 == v2;
     }
 };
