@@ -26,7 +26,7 @@ public:
             for(int i = 0; i < size; i++){
                 pair<TreeNode*, int> p = q.front();
                 TreeNode* node = p.first;
-                int idx = p.second;
+                int idx = p.second-start;
                 q.pop();
                 if(node->left) q.push({node->left, (long long)2*idx+1});
                 if(node->right) q.push({node->right, (long long)2*idx+2});
