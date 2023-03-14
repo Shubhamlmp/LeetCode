@@ -17,13 +17,10 @@ public:
             return;
         }
         tempSum = tempSum * 10 + root->val;
-        cout << "before "<< tempSum << " ";
         if(root->left == NULL && root->right == NULL){
             totalSum += tempSum;
         }
-        cout << endl;
         solve(root->left, tempSum);
-        cout << "after "<< tempSum << " ";
         solve(root->right, tempSum);
     }
     int sumNumbers(TreeNode* root) {
