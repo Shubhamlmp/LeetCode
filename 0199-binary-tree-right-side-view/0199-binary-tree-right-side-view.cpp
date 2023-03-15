@@ -15,7 +15,6 @@ public:
         if(root == NULL){
             return;
         }
-        cout << root->val << " ";
         if(level == ans.size()){
             ans.push_back(root->val);
         }
