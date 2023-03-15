@@ -5,7 +5,7 @@ public:
         string str = "aeiou";
         for(int i = left; i <= right; i++){
             string s = words[i];
-            if (str.find(s[0]) != std::string::npos && str.find(s[s.size()-1]) != std::string::npos) {
+            if (str.find(s[0]) != -1 && str.find(s[s.size()-1]) != -1) {
                 count++;
             }
         }
