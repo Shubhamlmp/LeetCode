@@ -7,9 +7,6 @@ public:
             if(diff != arr[i+1]-arr[i]){
                 return false;
             }
-            else{
-                diff = arr[i+1]-arr[i];
-            }
         }
         return true;
     }
