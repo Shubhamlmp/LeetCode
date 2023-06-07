@@ -1,8 +1,10 @@
 class Solution {
 private:
+    vector<vector<int>> ans;
     void permuteUnique(vector<int> nums, int index ,set<vector<int>> &st) {
-        if(index == nums.size()){
+        if(index == nums.size() && st.find(nums) == st.end()){
             st.insert(nums);
+            ans.push_back(nums);
             return;
         }
         for(int i = index; i < nums.size(); i++){
@@ -14,12 +16,7 @@ private:
 public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         set<vector<int>>st;
-        int index = 0;
-        vector<vector<int>> ans;
-        permuteUnique(nums, index, st);
-        for(auto x : st){
-            ans.push_back(x);
-        }
+        permuteUnique(nums, 0, st);
         return ans;
     }
 };
