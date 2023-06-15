@@ -12,12 +12,10 @@
 class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
-        queue<TreeNode*> q;
+        queue<TreeNode*>q;
         q.push(root);
-        
-        int sum;
-        vector<int> level_sum;
-        
+        vector<int>level_sum;
+        int sum = 0;
         while(!q.empty()){
             int n = q.size();
             sum = 0;
@@ -31,12 +29,12 @@ public:
             level_sum.push_back(sum);
         }
         int n = level_sum.size();
-        int ans = INT_MIN;
         int index = 0;
+        sum = INT_MIN;
         for(int i = 0; i < n; i++){
-            if(ans < level_sum[i]){
+            if(sum < level_sum[i]){
+                sum = level_sum[i];
                 index = i+1;
-                ans = level_sum[i];
             }
         }
         return index;
