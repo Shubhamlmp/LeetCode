@@ -9,7 +9,6 @@ public:
     long long smallestNumber(long long num) {
         if(num == 0) return 0;
         string s = "";
-        long long ans = 0;
         if(num > 0){
             s = to_string(num);
             sort(s.begin(),s.end(),cmp1);
@@ -34,7 +33,7 @@ public:
                 temp = s;
             }
             
-            ans = stoll(temp);
+            num = stoll(temp);
         }
         else{
             num *= -1;
@@ -58,9 +57,9 @@ public:
             else{
                 temp = s;
             }
-            ans = stoll(temp);
-            ans *= -1;
+            num = stoll(temp);
+            num *= -1;
         }
-        return ans;
+        return num;
     }
 };
