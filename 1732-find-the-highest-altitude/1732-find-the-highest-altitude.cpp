@@ -4,8 +4,9 @@ public:
         vector<int>preSum;
         preSum.push_back(0);
         for(int i = 0; i < gain.size(); i++){
-            preSum.push_back(preSum[i]+gain[i]);
+            preSum.push_back(gain[i]+preSum[i]);
         }
-        return *max_element(preSum.begin(),preSum.end());
+        int ans = *max_element(preSum.begin(),preSum.end());
+        return ans;
     }
 };
