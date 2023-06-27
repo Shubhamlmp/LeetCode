@@ -11,7 +11,7 @@ public:
                     pq.push({x+y, {x,y}});
                     pq.pop();
                 }
-                else if(x+y > pq.top().first){
+                else{
                     break;
                 }
             }
