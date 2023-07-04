@@ -7,7 +7,7 @@ public:
             int top = pq.top();
             sum += top;
             pq.pop();
-            pq.push(ceil((double)top/3));
+            pq.push((top+2)/3);
         }
         return sum;
     }
