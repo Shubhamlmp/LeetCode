@@ -1,33 +1,36 @@
 class Solution {
-    vector<int>primes;
 public:
-    bool isPrime(int n){
-        if(n <= 1) return false;
-        if(n == 2) return true;
-        for(int i = 2; i <= sqrt(n); i++){
-            if(n%i == 0){
-                return false;
+    vector<bool> isPrime(int n){
+        vector<bool> primes(n+1, true);
+        primes[1] = false;
+        for(int i = 2; i <= n; i++){
+            if(primes[i]){
+                for(long j = (long) i*i; j <= n; j += i){
+                    primes[j] = false;
+                }
             }
         }
-        return true;
-            
+        return primes;
     }
+    
     vector<int> closestPrimes(int left, int right) {
+        vector<bool> primes = isPrime(right);
+        vector<int>ans;
         for(int i = left; i <= right; i++){
-            if(isPrime(i)){
-                primes.push_back(i);
+            if(primes[i]){
+                ans.push_back(i);
             }
         }
-        if(primes.size() <= 1){
+        if(ans.size() <= 1){
             return {-1,-1};
         }
         int minn = INT_MAX;
         int a, b;
-        for(int i = 1; i < primes.size(); i++){
-            if(abs(primes[i] - primes[i-1]) < minn){
-                a = primes[i-1];
-                b = primes[i];
-                minn = abs(primes[i] - primes[i-1]);
+        for(int i = 1; i < ans.size(); i++){
+            if(abs(ans[i] - ans[i-1]) < minn){
+                a = ans[i-1];
+                b = ans[i];
+                minn = abs(ans[i] - ans[i-1]);
             }
         }
         return {a,b};
