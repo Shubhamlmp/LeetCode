@@ -10,13 +10,13 @@ public:
                 if(s[j] != separator){
                     temp += s[j];
                 }
-                else if(s[j] == separator && temp.size()>0){
+                else if(s[j] == separator && temp != ""){
                     ans.push_back(temp);
                     temp.clear();
                 }
                 j++;
             }
-            if(temp.size()>0) ans.push_back(temp);
+            if(temp != "") ans.push_back(temp);
         }
         return ans;
     }
