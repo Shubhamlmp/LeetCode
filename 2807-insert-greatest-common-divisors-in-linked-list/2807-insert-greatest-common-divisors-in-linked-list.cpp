@@ -10,29 +10,18 @@
  */
 class Solution {
 public:
+    int gcd(int a , int b){
+        return __gcd(a,b);
+    }
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
-        vector<int>vec;
-        ListNode* temp = head;
-        while(temp){
-            vec.push_back(temp->val);
-            temp = temp->next;
+        ListNode* curr = head;
+        while(curr->next){
+            ListNode* next = curr->next;
+            ListNode* temp = new ListNode(gcd(curr->val, next->val));
+            curr->next = temp;
+            temp->next = next;
+            curr = curr->next->next;
         }
-        vector<int>ans;
-        for(int i = 0; i < vec.size()-1; i++){
-            int a = vec[i];
-            int b = vec[i+1];
-            int gcd = __gcd(a,b);
-            ans.push_back(a);
-            ans.push_back(gcd);
-        }
-        ans.push_back(vec[vec.size()-1]);
-        ListNode* newNode = new ListNode();
-        ListNode* curr = newNode;
-        for(auto x : ans){
-            ListNode* temp = new ListNode(x);
-            newNode->next = temp;
-            newNode = newNode->next;
-        }
-        return curr->next;
+        return head;
     }
 };
