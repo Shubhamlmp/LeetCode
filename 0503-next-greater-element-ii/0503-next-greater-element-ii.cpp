@@ -1,9 +1,14 @@
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
+        int n = nums.size();
+        nums.resize(2*n);
+        for(int i = n; i < 2*n; i++){
+            nums[i] = nums[i-n];
+        }
+        
         vector<int>ans;
-        int i;
-        for(i = 0; i < nums.size(); i++){
+        for(int i = 0; i < n; i++){
             int mx = -1;
             bool check = false;
             for(int j = i+1; j < nums.size(); j++){
@@ -11,14 +16,6 @@ public:
                     mx = nums[j];
                     check = true;
                     break;
-                }
-            }
-            if(mx == -1 && check == false){
-                for(int j = 0; j < i; j++){
-                    if(nums[j] > nums[i]){
-                        mx = nums[j];
-                        break;
-                    }
                 }
             }
             ans.push_back(mx);
