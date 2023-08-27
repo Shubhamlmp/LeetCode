@@ -9,12 +9,9 @@ public:
             if(m.find(target-i) == m.end()){
                 ans += i;
                 m[i]++;
-                i++;
                 j++;
             }
-            else{
-                i++;
-            }
+            i++;
         }
         return ans;
     }
