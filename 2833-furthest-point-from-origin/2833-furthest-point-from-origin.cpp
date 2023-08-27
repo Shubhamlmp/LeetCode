@@ -1,19 +1,16 @@
 class Solution {
 public:
     int furthestDistanceFromOrigin(string moves) {
-        unordered_map<char,int>m;
+        int count_L = 0, count_ = 0;
         for(auto x : moves){
-            m[x]++;
+            if(x == 'L'){
+                count_L++;
+            }
+            if(x == '_'){
+                count_++;
+            }
         }
-        int ans = 0;
-        if(m.size() == 2){
-            if(m.find('R') == m.end()) ans = m['L'] + m['_'];
-            if(m.find('L') == m.end()) ans = m['R'] + m['_'];
-            if(m.find('_') == m.end()) ans = m['R'] - m['L'];
-        }
-        else{
-            ans = max((m['L'] + m['_'] - m['R']), (m['R'] + m['_'] - m['L']));
-        }
-        return abs(ans);
+        int count_R = moves.size()- count_L - count_;
+        return max(count_R,count_L)+count_-min(count_R,count_L);
     }
 };
