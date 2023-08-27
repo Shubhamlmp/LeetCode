@@ -2,16 +2,12 @@ class Solution {
 public:
     long long minimumPossibleSum(int n, int target) {
         long long ans = 0;
-        unordered_map<int,int>m;
-        int i = 1;
-        int j = 0;
-        while(j != n){
-            if(m.find(target-i) == m.end()){
+        unordered_set<int>s;
+        for(int i = 1; s.size() < n; i++){
+            if(s.find(target-i) == s.end()){
                 ans += i;
-                m[i]++;
-                j++;
+                s.insert(i);
             }
-            i++;
         }
         return ans;
     }
