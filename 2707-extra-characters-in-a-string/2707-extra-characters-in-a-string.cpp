@@ -9,11 +9,7 @@ public:
         int res = s.size();
         for(int i = index; i < s.size(); i++){
             curr.push_back(s[i]);
-            int extraCount = curr.size();
-            if(m[curr]){
-                extraCount = 0;
-            }
-            extraCount += helper(i+1, s,m,dp);
+            int extraCount = ((m[curr]) ? 0 : curr.size()) + helper(i+1, s,m,dp);
             res = min(res,extraCount);
         }
         return dp[index] = res;
