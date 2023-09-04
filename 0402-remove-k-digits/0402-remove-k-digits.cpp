@@ -12,18 +12,18 @@ public:
                 st.push(ch);
             }
         }
+        if(st.size() == 0) return "0";
         while(!st.empty() && k--){
             st.pop();
             if(st.empty()){
                 return "0";
             }
         }
-        int sz = st.size();
         while(!st.empty()){
             num[n-1] = st.top();
             st.pop();
             n-=1;
         }
-        return sz == 0 ? "0": num.substr(n);
+        return num.substr(n);
     }
 };
