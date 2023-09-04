@@ -1,8 +1,8 @@
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-        if(k == num.size()) return "0";
         int n = num.size();
+        if(k == n) return "0";
         stack<char>st;
         for(char ch : num){
             while(!st.empty() && k > 0 && st.top() > ch){
@@ -12,13 +12,11 @@ public:
                 st.push(ch);
             }
         }
-        if(st.size() == 0) return "0";
         while(!st.empty() && k--){
             st.pop();
-            if(st.empty()){
-                return "0";
-            }
         }
+        if(st.size() == 0) return "0";
+        
         while(!st.empty()){
             num[n-1] = st.top();
             st.pop();
