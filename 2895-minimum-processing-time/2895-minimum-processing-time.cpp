@@ -12,17 +12,14 @@ public:
         int j = 0;
         int sum = 0;
         for(int i = 0; i < tasks.size(); i++){
+            sum = max(sum , (processorTime[j] + tasks[i]));            
+            count++;
             if(count == parts){
                 ans = max(ans,sum);
-                cout << ans  << " " << sum << endl;
                 count = 0, sum = 0, j = j+1;
             }
-            sum = max(sum , (processorTime[j] + tasks[i]));
-            // cout << sum << " "<< processorTime[j] << " "<< tasks[i] << " "<<  count << endl;
-            
-            count++;
         }
-        ans = max(ans, sum);
+        // ans = max(ans, sum);
         return ans;
     }
 };
