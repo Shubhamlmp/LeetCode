@@ -2,17 +2,16 @@ class Solution {
 public:
     int constrainedSubsetSum(vector<int>& nums, int k) {
         int n = nums.size();
-        vector<int>v = nums;
         priority_queue<pair<int,int>>pq;
+        pq.push({nums[0],0});
         int ans = nums[0];
-        pq.push({v[0],0});
         for(int i = 1; i < n; i++){
-            while(!pq.empty() && pq.top().second < i-k){
+            while(i-pq.top().second > k){
                 pq.pop();
             }
-            v[i] = max(v[i], nums[i]+pq.top().first);
-            pq.push({v[i],i});
-            ans = max(ans, v[i]);
+            int curr = max(0, pq.top().first)+nums[i];
+            pq.push({curr,i});
+            ans = max(ans, curr);
         }
         return ans;
     }
