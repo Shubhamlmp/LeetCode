@@ -1,26 +1,23 @@
 class Solution {
 public:
-    vector<vector<int>> ans;
-    void combinedSum(vector<int>& candidates, int target, vector<int>& currComb, int currSum, int idx){
-        if(currSum > target) return;
-        if(currSum == target) {
-            ans.push_back(currComb);
+    void findCombination(int idx, int target, vector<int>& can, vector<vector<int>> &ans, vector<int> &temp){
+        if(idx == can.size()){
+            if(target == 0){
+                ans.push_back(temp);
+            }
             return;
         }
-        
-        for(int i = idx; i < candidates.size(); i++){
-            currComb.push_back(candidates[i]);
-            currSum += candidates[i];
-            combinedSum(candidates, target, currComb, currSum, i);
-            currComb.pop_back();
-            currSum -= candidates[i];
+        if(can[idx] <= target){
+            temp.push_back(can[idx]);
+            findCombination(idx, target-can[idx], can, ans, temp);
+            temp.pop_back();
         }
+        findCombination(idx+1, target, can, ans, temp);
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        sort(candidates.begin(),candidates.end());
-        vector<int>currComb;
-        combinedSum(candidates, target, currComb, 0, 0);
+        vector<vector<int>> ans;
+        vector<int>temp;
+        findCombination(0, target, candidates, ans, temp);
         return ans;
-        
     }
 };
