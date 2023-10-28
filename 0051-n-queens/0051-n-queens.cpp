@@ -1,42 +1,43 @@
 class Solution {
 public:
     vector<vector<string>> ans;
-    bool isPossible(int n, int row, int col, vector<string>board){
-        for(int i = row-1; i >= 0; i--){
-            if(board[i][col] == 'Q'){
-                return false;
-            }
+    bool isSafe(int col, int row, vector<string> &board, int n){
+        int i = row, j = col;
+        while(row >= 0 && col >= 0){
+            if(board[row][col] == 'Q') return false;
+            row--;
+            col--;
         }
-        for(int i = row-1, j = col-1; i >= 0 && j >= 0; i--, j--){
-            if(board[i][j] == 'Q'){
-                return false;
-            }
+        row = i, col = j;
+        while(col >= 0){
+            if(board[row][col] == 'Q') return false;
+            col--;
         }
-        for(int i = row-1, j = col+1; i >= 0 && j < n; i--, j++){
-            if(board[i][j] == 'Q'){
-                return false;
-            }
+        
+        row = i, col = j;
+        while(row < n && col >= 0){
+            if(board[row][col] == 'Q') return false;
+            row++;
+            col--;
         }
         return true;
     }
-    void nQueenHelper(vector<string>board, int n,int row){
-        if(row == n){
+    void nQueenHelper(vector<string> &board, int n, int col) {
+        if(col == n){
             ans.push_back(board);
-        return;
+            return;
         }
-            
-        for(int j = 0; j < n; j++){
-            if(isPossible(n, row, j, board)){
-                board[row][j] = 'Q';
-                nQueenHelper(board,n, row+1);
-                board[row][j] = '.';
+        for(int row = 0; row < n; row++){
+            if(isSafe(col, row, board, n)){
+                board[row][col] = 'Q';
+                nQueenHelper(board, n, col+1);
+                board[row][col] = '.';
             }
         }
-        return;
-    };
+    }
     vector<vector<string>> solveNQueens(int n) {
-        vector<string>board (n, string(n, '.'));
-        nQueenHelper(board,n,0);
+        vector<string> board(n, string(n,'.'));
+        nQueenHelper(board, n, 0);
         return ans;
     }
 };
