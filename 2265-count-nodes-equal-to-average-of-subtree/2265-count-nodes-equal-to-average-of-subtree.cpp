@@ -11,23 +11,24 @@
  */
 class Solution {
 public:
-    int count = 0;
-    pair<int,int> countNode(TreeNode* root) {
+    int cnt = 0;
+    pair<int,int> helper(TreeNode* root){
         if(root == NULL){
             return {0,0};
         }
-        auto left = countNode(root->left);
-        auto right = countNode(root->right);
-        int sum = left.first + right.first + root->val;
-        int n = left.second + right.second + 1;
-        count += ((sum/n) == root->val);
+        auto left = helper(root->left);
+        auto right = helper(root->right);
+        
+        int sum = left.first+right.first+root->val;
+        int n = left.second+right.second+1;
+        cnt += ((sum/n) == root->val);
         return {sum,n};
     }
     int averageOfSubtree(TreeNode* root) {
         if(root == NULL){
             return 0;
         }
-        countNode(root);
-        return count;
+        helper(root);
+        return cnt;
     }
 };
