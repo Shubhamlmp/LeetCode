@@ -6,20 +6,19 @@ public:
         for(auto x : nums){
             mp[x]++;
         }
-        sort(nums.begin(),nums.end());
-        for(int i = 0; i < nums.size(); i++){
+        while(!mp.empty()){
             vector<int>arr;
-            unordered_map<int,int>check;
-            for(int j = i; j < nums.size(); j++){
-                if(mp.find(nums[j]) != mp.end() && mp[nums[j]] > 0){
-                    if(check.find(nums[j]) == check.end()){
-                        arr.push_back(nums[j]);
-                        check[nums[j]]++;
-                        mp[nums[j]]--;
-                    }
+            for(auto it = mp.begin(); it != mp.end();){
+                arr.push_back(it->first);
+                it->second--;
+                if(it->second == 0){
+                    it = mp.erase(it);
+                }
+                else{
+                    ++it;
                 }
             }
-            if(!arr.empty()) ans.push_back(arr);
+            ans.push_back(arr);
         }
         return ans;
     }
