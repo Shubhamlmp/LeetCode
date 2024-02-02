@@ -12,7 +12,9 @@ public:
             if(num >= low && num <= high){
                 ans.push_back(num);
             }
-            
+            if(num > high){
+                break;
+            }
             if(num%10 < 9){
                 int rem = num%10;
                 
