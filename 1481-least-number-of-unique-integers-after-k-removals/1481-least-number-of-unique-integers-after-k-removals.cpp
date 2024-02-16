@@ -9,17 +9,17 @@ public:
         for(auto x : mp){
             pq.push({x.second,x.first});
         }
-        int count = 0;
         while(!pq.empty()){
             int freq = pq.top().first;
             if(freq <= k){
                 k -=  freq;
+                pq.pop();
             }
             else{
-                count++;
+                break;
             }
-            pq.pop();
+            
         }
-        return count;
+        return pq.size();
     }
 };
