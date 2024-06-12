@@ -19,6 +19,6 @@ public:
                 start = mid + 1;
             }
         }
-        return static_cast<int>(round(end));
+        return (int) round(end);
     }
 };
