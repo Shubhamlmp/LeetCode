@@ -21,11 +21,9 @@ public:
                 } else {
                     xyz++;
                 }
-                if(t.size() >= 5){
-                    if(a > 0 && e > 0 && iNum > 0 && o > 0 && u >> 0 && xyz == k){
-                        ans++;
-                    }
-                    
+                
+                if(a > 0 && e > 0 && iNum > 0 && o > 0 && u >> 0 && xyz == k){
+                    ans++;
                 }
             }
         }
