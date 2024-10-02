@@ -1,29 +1,16 @@
 class Solution {
 public:
-    long long maximumTotalSum(vector<int>& maxH) {
-        sort(maxH.begin(), maxH.end());
+    long long maximumTotalSum(vector<int>& maximumHeight) {
+        sort(maximumHeight.begin(), maximumHeight.end());
         long long ans = 0;
-        int n = maxH.size();
-        int last = 0;
-
+        int n = maximumHeight.size();
+        int last = INT_MAX;
         for(int i = n-1; i >= 0; i--){
-            int num = maxH[i];
-            if(i == n-1){
-                ans += num;
-            } else{
-                if(num < last){
-                    ans += num;
-                } else {
-                    last -= 1;
-                    ans += last;
-                    num = last;
-                }
+            if(maximumHeight[i] < last) ans += maximumHeight[i], last = maximumHeight[i];
+            else ans += last - 1, last -= 1;
+            if(last <= 0) {
+                return -1;
             }
-            if(num <= 0) {
-                ans = -1;
-                break;
-            }
-            last = num;
         }
         return ans;
     }
