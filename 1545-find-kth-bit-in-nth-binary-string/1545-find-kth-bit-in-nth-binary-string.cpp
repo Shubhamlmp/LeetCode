@@ -1,25 +1,27 @@
 class Solution {
-private:
-    string invert(string str) {
+public:
+    string invert(string s){
         string res = "";
-        for (char ch : str) {
-            if (ch == '0')
+        for(auto x : s){
+            if(x == '0')
                 res += '1';
             else
                 res += '0';
         }
         return res;
     }
-
-public:
     char findKthBit(int n, int k) {
-        string res = "0";
-        for (int i = 1; i < n; i++) {
-            string inverted = invert(res);
-            res += '1'; 
-            reverse(inverted.begin(), inverted.end()); 
-            res += inverted;
+        string s = "0";
+        for(int i = 1; i < n; i++){
+            string inverted = invert(s);
+            s += '1';
+            reverse(inverted.begin(), inverted.end());
+            s += inverted;
+            if(k < s.size()/2){
+                break;
+            }
         }
-        return res[k - 1]; 
+        
+        return s[k-1];
     }
 };
