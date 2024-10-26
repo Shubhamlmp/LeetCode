@@ -1,20 +1,18 @@
 class Solution {
 public:
-    int solve(unordered_map<unsigned int,int> &dp,unsigned int n){
-        if(n==1){
-            return 0;
-        }
-        if(dp.find(n) != dp.end()){
-            return dp[n];
-        }
-        if(n&1){
-            return dp[n] = min(solve(dp,n+1),solve(dp,n-1))+1;
-        }else{
-            return dp[n] = solve(dp,n/2)+1;
-        }
-    }
     int integerReplacement(int n) {
-        unordered_map<unsigned int,int> dp;
-        return solve(dp,n);
+        int ans = 0;
+        long num = n;
+        while(num != 1) {
+            if(num%2 == 0){
+                num /= 2;
+            } else if(num%4 == 1 || num == 3){
+                num -= 1;
+            } else {
+                num +=1;
+            }
+            ans++;
+        }
+        return ans;
     }
 };
